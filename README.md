@@ -23,7 +23,23 @@ returning Vercel's `NOT_FOUND` response.
 
 ## Deploying to Vercel
 
-Import the repository into Vercel without overriding its build settings. Vercel
-will use the checked-in build command and output directory. If the project already
-has dashboard-level overrides, clear **Build Command** and **Output Directory** so
-that `vercel.json` remains the source of truth, then redeploy the latest commit.
+Import the repository into Vercel with these project settings:
+
+| Setting | Value |
+| --- | --- |
+| Root Directory | `.` (the repository root) |
+| Framework Preset | `Other` |
+| Build Command | Leave blank / use `vercel.json` |
+| Output Directory | Leave blank / use `vercel.json` |
+
+The checked-in configuration deliberately sets `framework` to `null`; this is a
+static site, not a Next.js project. It also supplies the build command and output
+directory. If this project was previously configured as **Next.js** in the Vercel
+dashboard, change **Framework Preset** to **Other**, reset the Build Command and
+Output Directory overrides, and confirm the Root Directory is the directory that
+contains this `package.json`. Then redeploy the latest commit without using the
+old build cache.
+
+The error `No Next.js version detected` means the Vercel project is still applying
+the Next.js preset to this static site; installing Next.js is not necessary and
+would add an unused application framework.
