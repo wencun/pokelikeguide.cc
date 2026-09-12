@@ -1,45 +1,38 @@
 # Pokelike Guide
 
-A responsive editorial landing page for discovering creature-collecting games. The site is intentionally dependency-free and can be hosted on any static web host.
+A responsive editorial landing page for discovering creature-collecting games.
+The site is plain HTML, CSS, and JavaScript and has no framework, dependency
+installation, or build step.
 
 ## Local development
 
 ```bash
-python3 -m http.server 4173
+python3 -m http.server 4173 --directory public
 ```
 
 Then visit `http://localhost:4173`.
 
-## Production build
-
-```bash
-npm run build
-```
-
-The deployable site is written to `dist/`. The included `vercel.json` explicitly
-configures that directory as Vercel's build output and preserves real static
-assets before falling back to `index.html`. This prevents direct links from
-returning Vercel's `NOT_FOUND` response.
-
 ## Deploying to Vercel
 
-Import the repository into Vercel with these project settings:
+The repository follows Vercel's conventional static-site layout: every deployable
+file is checked into `public/`. The checked-in `vercel.json` selects no framework
+and publishes that directory directly.
+
+Use these Vercel project settings:
 
 | Setting | Value |
 | --- | --- |
-| Root Directory | `.` (the repository root) |
+| Root Directory | Leave empty |
 | Framework Preset | `Other` |
-| Build Command | Leave blank / use `vercel.json` |
-| Output Directory | Leave blank / use `vercel.json` |
+| Build Command | Override off |
+| Output Directory | Override off |
+| Install Command | Override off |
 
-The checked-in configuration deliberately sets `framework` to `null`; this is a
-static site, not a Next.js project. It also supplies the build command and output
-directory. If this project was previously configured as **Next.js** in the Vercel
-dashboard, change **Framework Preset** to **Other**, reset the Build Command and
-Output Directory overrides, and confirm the Root Directory is the directory that
-contains this `package.json`. Then redeploy the latest commit without using the
-old build cache.
+Do not enter `./` in **Root Directory**. Vercel describes that field as a path to
+a subdirectory; this project lives at the repository root, so the correct value is
+empty. After changing it, save the settings and redeploy the latest commit without
+the previous build cache.
 
-The error `No Next.js version detected` means the Vercel project is still applying
-the Next.js preset to this static site; installing Next.js is not necessary and
-would add an unused application framework.
+No Next.js version should be installed or detected because this project does not
+use Next.js. There is also no generated `dist/` directory that can go missing in
+a deployment—the published files are present in Git under `public/`.
