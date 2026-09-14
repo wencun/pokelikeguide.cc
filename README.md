@@ -4,6 +4,13 @@ A responsive editorial landing page for discovering creature-collecting games.
 The site is plain HTML, CSS, and JavaScript and has no framework, dependency
 installation, or build step.
 
+The checked-in pages are generated from `scripts/build_site.py`. Run it after
+editing shared navigation, metadata, or page content:
+
+```bash
+python3 scripts/build_site.py
+```
+
 ## Local development
 
 ```bash
