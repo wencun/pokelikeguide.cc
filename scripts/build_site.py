@@ -6,6 +6,14 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
 GA_ID = "G-B7HK8JPQPS"
 
+TOP_AD = """
+<aside class="top-ad" aria-label="Advertisement"><span>Advertisement</span><script async="async" data-cfasync="false" src="https://pl31325133.profitableratecpmnetwork.com/b87b668a48c79cbabf012f126c397ec0/invoke.js"></script><div id="container-b87b668a48c79cbabf012f126c397ec0"></div></aside>
+"""
+
+AD_SCRIPTS = """
+<script src="https://pl31325131.profitableratecpmnetwork.com/cf/d1/a6/cfd1a6892f5f97772342d8e6891161e1.js"></script><script src="https://pl31325134.profitableratecpmnetwork.com/df/53/23/df5323aa1e62585a69e5b0b0c2ae0903.js"></script>
+"""
+
 NAV = """
 <a href="/pokesort/">Pokesort</a><a href="/regions/">Regions</a><a href="/traits/">Traits</a><a href="/battle-tower/">Battle Tower</a><a href="/guides/getting-started/">Beginner Guide</a><a href="/community/">Community</a>
 """
@@ -24,7 +32,7 @@ def page(title: str, description: str, canonical: str, body: str, *, schema_type
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"{schema_type}","headline":"{title}","url":"https://pokelikeguide.cc{canonical}","isPartOf":{{"@type":"WebSite","name":"Pokelike Guide","url":"https://pokelikeguide.cc/"}}}}</script>
 <!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag('js',new Date());gtag('config','{GA_ID}');</script></head>
 <body><header><a class="logo" href="/"><span>PG</span> Pokelike Guide</a><nav>{NAV}</nav><button class="menu" aria-label="Open navigation" aria-expanded="false">Menu</button></header>
-<main>{body}</main>{FOOTER}<script src="/script.js"></script></body></html>"""
+{TOP_AD}<main>{body}</main>{FOOTER}<script src="/script.js"></script>{AD_SCRIPTS}</body></html>"""
 
 
 def write(url: str, html: str) -> None:
@@ -89,7 +97,7 @@ community = """
 write("/community/", page("Pokelike Reddit Community — Sources, Tips & Research", "Pokelike Reddit source hub for current questions, Pokésort hints, traits, Battle Tower strategy, and transparent community verification.", "/community/", community))
 
 privacy = """
-<section class="article-hero"><nav class="crumb"><a href="/">Home</a> / Privacy</nav><p class="kicker orange">Site policy</p><h1>Privacy Policy</h1><p class="lede">A plain-language summary of the data used to operate Pokelike Guide.</p></section><article class="article"><h2>Analytics</h2><p>This site uses Google Analytics to understand aggregate page visits and improve guide coverage. Google may process device, browser, approximate location, and interaction information according to its own policies.</p><h2>Cookies and advertising</h2><p>Analytics or future advertising partners may use cookies or similar storage. Advertising is not currently required to access any guide answer or tool.</p><h2>Contact</h2><p>Questions or correction requests can be sent to <a href="mailto:hello@pokelikeguide.cc">hello@pokelikeguide.cc</a>.</p><p><small>Last updated: September 14, 2026.</small></p></article>
+<section class="article-hero"><nav class="crumb"><a href="/">Home</a> / Privacy</nav><p class="kicker orange">Site policy</p><h1>Privacy Policy</h1><p class="lede">A plain-language summary of the data used to operate Pokelike Guide.</p></section><article class="article"><h2>Analytics</h2><p>This site uses Google Analytics to understand aggregate page visits and improve guide coverage. Google may process device, browser, approximate location, and interaction information according to its own policies.</p><h2>Cookies and advertising</h2><p>Analytics and advertising partners may use cookies or similar storage to measure visits, select ads, and prevent fraud. Advertising is not required to access any guide answer or tool.</p><h2>Contact</h2><p>Questions or correction requests can be sent to <a href="mailto:hello@pokelikeguide.cc">hello@pokelikeguide.cc</a>.</p><p><small>Last updated: September 15, 2026.</small></p></article>
 """
 write("/privacy/", page("Privacy Policy — Pokelike Guide", "Privacy policy for Pokelike Guide, including analytics, cookies, advertising, and contact information.", "/privacy/", privacy))
 
